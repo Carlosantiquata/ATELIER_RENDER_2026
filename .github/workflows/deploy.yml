@@ -94,12 +94,13 @@ jobs:
       - name: Terraform Init
         run: terraform init
         working-directory: terraform
-
+        
       - name: Terraform Apply
         run: |
           terraform apply -auto-approve \
             -var="render_api_key=${{ secrets.RENDER_API_KEY }}" \
             -var="render_owner_id=${{ secrets.RENDER_OWNER_ID }}" \
+            -var="database_url=${{ secrets.DATABASE_URL }}" \
             -var="image_url=${IMAGE_URL}" \
             -var="image_tag=${IMAGE_TAG}" \
             -var="github_actor=${ACTOR}"
