@@ -12,40 +12,6 @@ provider "render" {
   owner_id = var.render_owner_id
 }
 
-# ─── VARIABLES ───────────────────────────────────────────────────────────────
-
-variable "render_api_key" {
-  description = "Clé API Render"
-  type        = string
-  sensitive   = true
-}
-
-variable "render_owner_id" {
-  description = "Owner ID Render"
-  type        = string
-}
-
-variable "database_url" {
-  description = "URL de connexion PostgreSQL"
-  type        = string
-  sensitive   = true
-}
-
-variable "image_url" {
-  description = "URL de l'image Docker (injectée par la CI)"
-  type        = string
-}
-
-variable "image_tag" {
-  description = "Tag de l'image Docker (injectée par la CI)"
-  type        = string
-}
-
-variable "github_actor" {
-  description = "GitHub username"
-  type        = string
-}
-
 # ─── FLASK WEB SERVICE ───────────────────────────────────────────────────────
 
 resource "render_web_service" "flask_app" {
@@ -84,9 +50,8 @@ resource "render_web_service" "adminer" {
 
   env_vars = {
     ADMINER_DEFAULT_SERVER = {
-      # ⚠️ RAPPEL : Remplace cette valeur par le hostname de ton PostgreSQL 
-      # (ex: dpg-xxxx.frankfurt-postgres.render.com)
-      value = "dpg-d76ivrua2pns73eph8dg-a"  
+      # ⚠️ N'OUBLIE PAS : Remplace cette valeur par le vrai hostname de ton PostgreSQL 
+      value = "dpg-xxxxxxxx.frankfurt-postgres.render.com"  
     }
   }
 }
