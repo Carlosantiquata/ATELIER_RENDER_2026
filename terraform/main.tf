@@ -21,7 +21,9 @@ resource "render_web_service" "flask_app" {
 
   runtime_source = {
     image = {
-      image_url = "${var.image_url}:${var.image_tag}"
+      # On sépare l'URL et le tag pour respecter les nouvelles règles du provider Render
+      image_url = var.image_url
+      tag       = var.image_tag
     }
   }
 
@@ -44,18 +46,19 @@ resource "render_web_service" "adminer" {
 
   runtime_source = {
     image = {
-      image_url = "adminer:latest"
+      # On sépare également pour Adminer
+      image_url = "adminer"
+      tag       = "latest"
     }
   }
 
   env_vars = {
     ADMINER_DEFAULT_SERVER = {
-      # ⚠️ N'OUBLIE PAS : Remplace cette valeur par le vrai hostname de ton PostgreSQL 
+      # ⚠️ RAPPEL : Remets bien ici l'URL de ta base de données PostgreSQL !
       value = "dpg-d76ivrua2pns73eph8dg-a.frankfurt-postgres.render.com"  
     }
   }
 }
-
 # ─── OUTPUTS ─────────────────────────────────────────────────────────────────
 
 output "flask_url" {
