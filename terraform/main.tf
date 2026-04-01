@@ -86,7 +86,7 @@ resource "render_web_service" "adminer" {
     ADMINER_DEFAULT_SERVER = {
       # ⚠️ RAPPEL : Remplace cette valeur par le hostname de ton PostgreSQL 
       # (ex: dpg-xxxx.frankfurt-postgres.render.com)
-      value = "dpg-xxxxxxxx.frankfurt-postgres.render.com"  
+      value = "dpg-d76ivrua2pns73eph8dg-a"  
     }
   }
 }
