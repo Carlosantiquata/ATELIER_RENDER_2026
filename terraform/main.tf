@@ -51,7 +51,7 @@ resource "render_web_service" "adminer" {
   env_vars = {
     ADMINER_DEFAULT_SERVER = {
       # ⚠️ N'OUBLIE PAS : Remplace cette valeur par le vrai hostname de ton PostgreSQL 
-      value = "dpg-xxxxxxxx.frankfurt-postgres.render.com"  
+      value = "dpg-d76ivrua2pns73eph8dg-a.frankfurt-postgres.render.com"  
     }
   }
 }
